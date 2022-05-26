@@ -1,0 +1,20 @@
+#cloud-config
+#vim:syntax=yaml
+
+users:
+  - default
+  - name: ec2-user
+    ssh-authorized-keys:
+      - ssh-rsa ihU0lNPUW0Ifwel3s2khqOjhK45sGJrl9hyJVPgj9ezr4pLD0/CixDyB70YVtnUDnb2JmHFI4jwmiqV3FsF7wTGjEY3E1tDksWRsk8084Jq5LWadmb12SPJCRpG0RTx/l+3VdcKNmjInCbCWvJ4pfJQW+Ak5KLzEwNO+6QRUAOFgG3JvD2WspRsZeLY44p/mSZOxQGm5246mPhXX2s2L1Sa91dUwe3gv4Lqs9oW454qEqkOW8BxVEqL1FFrRiiYPdUwwj1CUYSf7ESw89dSqnhTy8uT/aPrNnRsFMkRimHd5oMJab+R2tRlgdt0QotiJVK3asX9mz8dUSLNKp19d
+
+chpasswd:
+  list: |
+    ec2-user:P@ssword
+
+
+write_files:
+  - path: /etc/cloud/cloud.cfg.d/80_disable_network_after_firstboot.cfg
+    content: |
+      # Disable network configuration after first boot
+      network:
+        config: disabled
